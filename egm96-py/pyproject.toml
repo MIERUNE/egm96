@@ -1,0 +1,28 @@
+[build-system]
+requires = ["maturin>=1.2,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "egm96-py"
+description = "Calculate geoid heights using the EGM96 geoid model."
+readme = "README.md"
+authors = [
+  { name = "Taku Fukada", email = "naninunenor@gmail.com" },
+  { name = "MIERUNE Inc.", email = "info@mierune.co.jp" },
+]
+license = "MIT"
+requires-python = ">=3.8"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Rust",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+
+[project.urls]
+repository = "https://github.com/MIERUNE/egm96/"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+

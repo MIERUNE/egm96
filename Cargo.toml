@@ -1,0 +1,42 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+resolver = "2"
+members = ["./egm96-*"]
+
+[workspace.package]
+version = "0.4.0"
+edition = "2021"
+authors = [
+    "Taku Fukada <naninunenor@gmail.com>",
+    "MIERUNE Inc. <info@mierune.co.jp>",
+]
+description = "Calculates geoid heights using the EGM96."
+license = "MIT"
+repository = "https://github.com/MIERUNE/egm96"
+categories = ["science", "science::geo"]
+
+[package]
+name = "egm96"
+version.workspace = true
+edition.workspace = true
+categories.workspace = true
+authors.workspace = true
+description.workspace = true
+license = "MIT"
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+lz4_flex = { version = "0.11.1", default-features = false }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2.84"
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+wasm-bindgen-test = "0.3.34"
+
+[profile.dev.package."*"]
+opt-level = 1
